@@ -32,7 +32,7 @@ export const Month1: FC<Month1Props> = (props) => {
       {weeks.map((week, i) => (
         <View key={i} style={styles.weekRow}>
           {week.slice(0, 4).map((day, j) => (
-            <Day key={j} day={day} />
+            <Day key={j} day={day} showRightBorder={j !== 3} />
           ))}
         </View>
       ))}

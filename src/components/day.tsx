@@ -14,14 +14,22 @@ const styles = StyleSheet.create({
   cellNumber: {
     fontSize: 10,
   },
+  noRightBorder: {
+    borderRightWidth: 0,
+  },
 });
 
 interface DayProps {
   day: DayCell;
+  showRightBorder?: boolean;
 }
 
 export const Day: FC<DayProps> = (props) => {
-  const { day } = props;
+  const { day, showRightBorder = true } = props;
 
-  return <View style={styles.cell}>{day && <Text style={styles.cellNumber}>{day.day}</Text>}</View>;
+  return (
+    <View style={[styles.cell, showRightBorder ? undefined : styles.noRightBorder]}>
+      {day && <Text style={styles.cellNumber}>{day.day}</Text>}
+    </View>
+  );
 };
