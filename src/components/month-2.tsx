@@ -34,7 +34,6 @@ export const Month2: FC<Month2Props> = (props) => {
 
       <View style={styles.gridRow}>
         <View style={styles.daysColumn}>
-          {/* {DAYS_OF_WEEK.map(x => <DayHeaderCell key={x} text={x} />)} */}
           <DaysHeaderRow days={DAYS_OF_WEEK} />
 
           {weeks.map((week, i) => (
