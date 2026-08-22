@@ -1,10 +1,10 @@
 import { DateTime } from 'luxon';
 
 export type DayCell = DateTime<true> | null;
-export type WeekRow = DayCell[];
+export type MonthWeek = DayCell[];
 
 // Builds full Sun-Sat week rows for a month, padded with nulls on either end
-export const getMonthWeeks = (month: DateTime<true>): WeekRow[] => {
+export const getMonthWeeks = (month: DateTime<true>): MonthWeek[] => {
   const daysInMonth = month.daysInMonth;
   const startingWeekday = month.weekday % 7;
 
@@ -20,7 +20,7 @@ export const getMonthWeeks = (month: DateTime<true>): WeekRow[] => {
     days.push(null);
   }
 
-  const weeks: WeekRow[] = [];
+  const weeks: MonthWeek[] = [];
   for (let i = 0; i < days.length; i += 7) {
     weeks.push(days.slice(i, i + 7));
   }
