@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     paddingRight: 18,
     borderWidth: 1,
     borderStyle: 'dashed',
+    borderColor: '#f9f9f9',
     flex: 1,
   },
 });
