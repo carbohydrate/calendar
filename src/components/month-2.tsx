@@ -1,7 +1,9 @@
 import { type FC } from 'react';
 import { StyleSheet, View } from '@react-pdf/renderer';
+import type { DateTime } from 'luxon';
 import { BleedPage } from './bleed-page';
 import { MonthHeader } from './month-header';
+import { MiniMonth } from './mini-month';
 import { DaysHeaderRow } from './day-header/days-header-row';
 import { WeekRow } from './week-row';
 import { NotesColumn } from './notes-column';
@@ -23,14 +25,19 @@ const styles = StyleSheet.create({
 
 interface Month2Props {
   weeks: MonthWeek[];
+  previousMonth: DateTime<true>;
+  nextMonth: DateTime<true>;
 }
 
 export const Month2: FC<Month2Props> = (props) => {
-  const { weeks } = props;
+  const { weeks, previousMonth, nextMonth } = props;
 
   return (
     <BleedPage>
-      <MonthHeader />
+      <MonthHeader>
+        <MiniMonth month={previousMonth} />
+        <MiniMonth month={nextMonth} />
+      </MonthHeader>
 
       <DaysHeaderRow days={DAYS_OF_WEEK} />
 

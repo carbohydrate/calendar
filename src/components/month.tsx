@@ -14,11 +14,13 @@ export const Month: FC<MonthProps> = (props) => {
 
   const weeks = getMonthWeeks(month);
   const title = `${month.monthLong} ${YEAR}`;
+  const previousMonth = month.minus({ months: 1 });
+  const nextMonth = month.plus({ months: 1 });
 
   return (
     <>
       <Month1 title={title} weeks={weeks} />
-      <Month2 weeks={weeks} />
+      <Month2 weeks={weeks} previousMonth={previousMonth} nextMonth={nextMonth} />
     </>
   );
 };
