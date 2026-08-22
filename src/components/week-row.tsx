@@ -1,4 +1,4 @@
-import { type FC, type ReactNode } from 'react';
+import { type FC } from 'react';
 import { StyleSheet, View } from '@react-pdf/renderer';
 import { Day } from './day';
 import type { DayCell } from '../utils/get-month-weeks';
@@ -14,18 +14,22 @@ const styles = StyleSheet.create({
 interface WeekRowProps {
   days: DayCell[];
   hideLastBorder?: boolean;
-  trailingCell?: ReactNode;
+  hideBottomBorder?: boolean;
 }
 
 export const WeekRow: FC<WeekRowProps> = (props) => {
-  const { days, hideLastBorder, trailingCell } = props;
+  const { days, hideLastBorder, hideBottomBorder } = props;
 
   return (
     <View style={styles.weekRow}>
       {days.map((day, j) => (
-        <Day key={j} day={day} showRightBorder={!hideLastBorder || j !== days.length - 1} />
+        <Day
+          key={j}
+          day={day}
+          showRightBorder={!hideLastBorder || j !== days.length - 1}
+          showBottomBorder={!hideBottomBorder}
+        />
       ))}
-      {trailingCell}
     </View>
   );
 };

@@ -4,7 +4,7 @@ import type { DayCell } from '../utils/get-month-weeks';
 
 const styles = StyleSheet.create({
   cell: {
-    width: '25%',
+    flex: 1,
     borderRightWidth: 0.5,
     borderRightColor: '#E0E0E0',
     borderBottomWidth: 0.5,
@@ -17,18 +17,28 @@ const styles = StyleSheet.create({
   noRightBorder: {
     borderRightWidth: 0,
   },
+  noBottomBorder: {
+    borderBottomWidth: 0,
+  },
 });
 
 interface DayProps {
   day: DayCell;
   showRightBorder?: boolean;
+  showBottomBorder?: boolean;
 }
 
 export const Day: FC<DayProps> = (props) => {
-  const { day, showRightBorder = true } = props;
+  const { day, showRightBorder = true, showBottomBorder = true } = props;
 
   return (
-    <View style={[styles.cell, showRightBorder ? undefined : styles.noRightBorder]}>
+    <View
+      style={[
+        styles.cell,
+        showRightBorder ? undefined : styles.noRightBorder,
+        showBottomBorder ? undefined : styles.noBottomBorder,
+      ]}
+    >
       {day && <Text style={styles.cellNumber}>{day.day}</Text>}
     </View>
   );
