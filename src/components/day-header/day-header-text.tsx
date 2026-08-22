@@ -4,8 +4,9 @@ import { type FC } from 'react';
 const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
-    fontSize: 10,
+    fontSize: 12,
     textTransform: 'uppercase',
+    letterSpacing: 2,
   },
 });
 

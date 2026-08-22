@@ -9,10 +9,10 @@ const styles = StyleSheet.create({
     borderRightColor: '#E0E0E0',
     borderBottomWidth: 0.5,
     borderBottomColor: '#E0E0E0',
-    padding: 4,
+    padding: 8,
   },
   cellNumber: {
-    fontSize: 10,
+    fontSize: 12,
   },
   noRightBorder: {
     borderRightWidth: 0,

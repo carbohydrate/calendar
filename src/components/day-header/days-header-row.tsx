@@ -1,11 +1,13 @@
 import { type FC } from 'react';
 import { StyleSheet, View } from '@react-pdf/renderer';
 import { DayHeaderText } from './day-header-text';
-import { sharedHeaderStyles } from './shared-styles';
 
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBottomColor: '#333333',
+    paddingBottom: 4,
   },
   cell: {
     width: '100%',
@@ -20,7 +22,7 @@ export const DaysHeaderRow: FC<DaysHeaderRowProps> = (props) => {
   const { days } = props;
 
   return (
-    <View style={[styles.row, sharedHeaderStyles.cellStyle]}>
+    <View style={styles.row}>
       {days.map((day) => (
         <View key={day} style={styles.cell}>
           <DayHeaderText text={day} />

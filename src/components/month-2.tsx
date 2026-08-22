@@ -7,7 +7,7 @@ import { WeekRow } from './week-row';
 import { NotesColumn } from './notes-column';
 import type { MonthWeek } from '../utils/get-month-weeks';
 
-const DAYS_OF_WEEK = ['Thu', 'Fri', 'Sat'];
+const DAYS_OF_WEEK = ['Thu', 'Fri', 'Sat', 'Notes'];
 
 const styles = StyleSheet.create({
   gridRow: {
@@ -32,10 +32,10 @@ export const Month2: FC<Month2Props> = (props) => {
     <BleedPage>
       <MonthHeader />
 
+      <DaysHeaderRow days={DAYS_OF_WEEK} />
+
       <View style={styles.gridRow}>
         <View style={styles.daysColumn}>
-          <DaysHeaderRow days={DAYS_OF_WEEK} />
-
           {weeks.map((week, i) => (
             <WeekRow
               key={i}
