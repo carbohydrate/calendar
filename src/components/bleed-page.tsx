@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
   page: {
     width: PAGE_WIDTH,
     height: PAGE_HEIGHT,
+    fontFamily: 'League Spartan',
   },
   trim: {
     paddingTop: 9,

@@ -18,12 +18,7 @@ export const App: FC = () => {
   return (
     <Document>
       {months.map((month, i) => {
-        return (
-          <Month
-            key={i}
-            month={month}
-          />
-        );
+        return <Month key={i} month={month} />;
       })}
     </Document>
   );
