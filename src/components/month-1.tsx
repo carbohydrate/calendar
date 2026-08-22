@@ -3,13 +3,13 @@ import { BleedPage } from './bleed-page';
 import { MonthHeader } from './month-header';
 import { DaysHeaderRow } from './day-header/days-header-row';
 import { WeekRow } from './week-row';
-import type { MonthWeek } from '../utils/get-month-weeks';
+import type { MonthGridWeek } from '../utils/get-month-weeks';
 
 const DAYS_OF_WEEK = ['Sun', 'Mon', 'Tue', 'Wed'];
 
 interface Month1Props {
   title: string;
-  weeks: MonthWeek[];
+  weeks: MonthGridWeek[];
 }
 
 export const Month1: FC<Month1Props> = (props) => {

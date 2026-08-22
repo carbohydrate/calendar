@@ -7,7 +7,7 @@ import { MiniMonth } from './mini-month';
 import { DaysHeaderRow } from './day-header/days-header-row';
 import { WeekRow } from './week-row';
 import { NotesColumn } from './notes-column';
-import type { MonthWeek } from '../utils/get-month-weeks';
+import type { MonthGridWeek } from '../utils/get-month-weeks';
 
 const DAYS_OF_WEEK = ['Thu', 'Fri', 'Sat', 'Notes'];
 
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 });
 
 interface Month2Props {
-  weeks: MonthWeek[];
+  weeks: MonthGridWeek[];
   previousMonth: DateTime<true>;
   nextMonth: DateTime<true>;
 }

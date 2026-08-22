@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
     borderRightColor: '#E0E0E0',
     borderBottomWidth: 0.5,
     borderBottomColor: '#E0E0E0',
+  },
+  cellContent: {
+    flex: 1,
     padding: 8,
   },
   cellNumber: {
@@ -20,16 +23,25 @@ const styles = StyleSheet.create({
   noBottomBorder: {
     borderBottomWidth: 0,
   },
+  splitStack: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  splitBottom: {
+    borderTopWidth: 0.5,
+    borderTopColor: '#E0E0E0',
+  },
 });
 
 interface DayProps {
   day: DayCell;
+  overflowDay?: DayCell;
   showRightBorder?: boolean;
   showBottomBorder?: boolean;
 }
 
 export const Day: FC<DayProps> = (props) => {
-  const { day, showRightBorder = true, showBottomBorder = true } = props;
+  const { day, overflowDay, showRightBorder = true, showBottomBorder = true } = props;
 
   return (
     <View
@@ -39,7 +51,22 @@ export const Day: FC<DayProps> = (props) => {
         showBottomBorder ? undefined : styles.noBottomBorder,
       ]}
     >
-      {day && <Text style={styles.cellNumber}>{day.day}</Text>}
+      {overflowDay ? (
+        <View style={styles.splitStack}>
+          <View style={styles.cellContent}>
+            <Text style={styles.cellNumber}>{day?.day}</Text>
+          </View>
+          <View style={[styles.cellContent, styles.splitBottom]}>
+            <Text style={styles.cellNumber}>{overflowDay.day}</Text>
+          </View>
+        </View>
+      ) : (
+        day && (
+          <View style={styles.cellContent}>
+            <Text style={styles.cellNumber}>{day.day}</Text>
+          </View>
+        )
+      )}
     </View>
   );
 };

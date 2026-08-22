@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { StyleSheet, View } from '@react-pdf/renderer';
 import { Day } from './day';
-import type { DayCell } from '../utils/get-month-weeks';
+import type { MonthGridWeek } from '../utils/get-month-weeks';
 
 const styles = StyleSheet.create({
   weekRow: {
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 });
 
 interface WeekRowProps {
-  days: DayCell[];
+  days: MonthGridWeek;
   hideLastBorder?: boolean;
   hideBottomBorder?: boolean;
 }
@@ -22,10 +22,11 @@ export const WeekRow: FC<WeekRowProps> = (props) => {
 
   return (
     <View style={styles.weekRow}>
-      {days.map((day, j) => (
+      {days.map((cell, j) => (
         <Day
           key={j}
-          day={day}
+          day={cell?.day ?? null}
+          overflowDay={cell?.overflowDay ?? null}
           showRightBorder={!hideLastBorder || j !== days.length - 1}
           showBottomBorder={!hideBottomBorder}
         />

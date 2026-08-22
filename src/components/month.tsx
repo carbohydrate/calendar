@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import type { DateTime } from 'luxon';
 import { Month1 } from './month-1';
 import { Month2 } from './month-2';
-import { getMonthWeeks } from '../utils/get-month-weeks';
+import { capWeeksAtFive, getMonthWeeks } from '../utils/get-month-weeks';
 import { YEAR } from '../constants';
 
 interface MonthProps {
@@ -12,7 +12,7 @@ interface MonthProps {
 export const Month: FC<MonthProps> = (props) => {
   const { month } = props;
 
-  const weeks = getMonthWeeks(month);
+  const weeks = capWeeksAtFive(getMonthWeeks(month));
   const title = `${month.monthLong} ${YEAR}`;
   const previousMonth = month.minus({ months: 1 });
   const nextMonth = month.plus({ months: 1 });
