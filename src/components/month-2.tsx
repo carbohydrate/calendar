@@ -8,6 +8,7 @@ import { DaysHeaderRow } from './day-header/days-header-row';
 import { WeekRow } from './week-row';
 import { NotesColumn } from './notes-column';
 import type { MonthGridWeek } from '../utils/get-month-weeks';
+import { monthSharedStyles } from './month-shared-styles';
 
 const DAYS_OF_WEEK = ['Thu', 'Fri', 'Sat', 'Notes'];
 
@@ -41,21 +42,23 @@ export const Month2: FC<Month2Props> = (props) => {
         <MiniMonth month={nextMonth} />
       </MonthHeader>
 
-      <DaysHeaderRow days={DAYS_OF_WEEK} />
+      <View style={monthSharedStyles.container}>
+        <DaysHeaderRow days={DAYS_OF_WEEK} />
 
-      <View style={styles.gridRow}>
-        <View style={styles.daysColumn}>
-          {weeks.map((week, i) => (
-            <WeekRow
-              key={i}
-              days={week.slice(4, 7)}
-              hideLastBorder
-              hideBottomBorder={i === weeks.length - 1}
-            />
-          ))}
+        <View style={styles.gridRow}>
+          <View style={styles.daysColumn}>
+            {weeks.map((week, i) => (
+              <WeekRow
+                key={i}
+                days={week.slice(4, 7)}
+                hideLastBorder
+                hideBottomBorder={i === weeks.length - 1}
+              />
+            ))}
+          </View>
+
+          <NotesColumn />
         </View>
-
-        <NotesColumn />
       </View>
     </BleedPage>
   );

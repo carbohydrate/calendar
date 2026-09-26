@@ -6,6 +6,8 @@ import { WeekRow } from './week-row';
 import type { MonthGridWeek } from '../utils/get-month-weeks';
 import type { DateTime } from 'luxon';
 import { YEAR } from '../constants';
+import { View } from '@react-pdf/renderer';
+import { monthSharedStyles } from './month-shared-styles';
 
 const DAYS_OF_WEEK = ['Sun', 'Mon', 'Tue', 'Wed'];
 
@@ -23,16 +25,19 @@ export const Month1: FC<Month1Props> = (props) => {
     <BleedPage>
       <MonthHeader title={title} month={month} />
 
-      <DaysHeaderRow days={DAYS_OF_WEEK} />
+      <View style={monthSharedStyles.container}>
 
-      {weeks.map((week, i) => (
-        <WeekRow
-          key={i}
-          days={week.slice(0, 4)}
-          hideLastBorder
-          hideBottomBorder={i === weeks.length - 1}
-        />
-      ))}
+        <DaysHeaderRow days={DAYS_OF_WEEK} />
+
+        {weeks.map((week, i) => (
+          <WeekRow
+            key={i}
+            days={week.slice(0, 4)}
+            hideLastBorder
+            hideBottomBorder={i === weeks.length - 1}
+          />
+        ))}
+      </View>
     </BleedPage>
   );
 };

@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderBottomWidth: CELL_BORDER_WIDTH,
     borderBottomColor: Colors.primary,
-    paddingTop: 6,
+    paddingTop: 10,
     paddingBottom: 4,
   },
   cell: {
