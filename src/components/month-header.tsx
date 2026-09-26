@@ -1,10 +1,22 @@
 import { type FC, type ReactNode } from 'react';
-import { StyleSheet, Text, View } from '@react-pdf/renderer';
+import { Image, StyleSheet, Text, View } from '@react-pdf/renderer';
+import { Colors } from './colors';
+import { DEFAULT_PAGE_PADDING } from './bleed-page';
 
 const styles = StyleSheet.create({
   header: {
-    height: 90,
+    height: 120,
+    paddingTop: DEFAULT_PAGE_PADDING,
+    paddingRight: DEFAULT_PAGE_PADDING,
+    paddingBottom: DEFAULT_PAGE_PADDING,
+    paddingLeft: DEFAULT_PAGE_PADDING,
+    backgroundColor: Colors.primary,
+    justifyContent: 'center',
+  },
+  container: {
     flexDirection: 'row',
+    flexGrow: 1,
+    alignItems: 'center',
   },
   monthTitle: {
     fontSize: 32,
@@ -28,9 +40,14 @@ export const MonthHeader: FC<MonthHeaderProps> = (props) => {
   const { title, children } = props;
 
   return (
-    <View style={styles.header}>
-      {title && <Text style={styles.monthTitle}>{title}</Text>}
-      <View style={styles.right}>{children}</View>
+    <View
+      style={styles.header}
+    >
+      <View style={styles.container}>
+        {title && <Text style={styles.monthTitle}>{title}</Text>}
+        <Image src='/images/1.png' style={{ width: 100, height: 100 }} />
+        <View style={styles.right}>{children}</View>
+      </View>
     </View>
   );
 };

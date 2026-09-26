@@ -2,27 +2,16 @@ import { type FC, type ReactNode } from 'react';
 import { Page, StyleSheet, View } from '@react-pdf/renderer';
 import { PAGE_HEIGHT, PAGE_WIDTH } from '../constants';
 
+export const DEFAULT_PAGE_PADDING = 18;
+
 const styles = StyleSheet.create({
   page: {
     width: PAGE_WIDTH,
     height: PAGE_HEIGHT,
     fontFamily: 'League Spartan',
   },
-  trim: {
-    paddingTop: 9,
-    paddingBottom: 9,
-    paddingLeft: 9,
-    paddingRight: 9,
-    flex: 1,
-  },
   content: {
-    paddingTop: 18,
     paddingBottom: 18,
-    paddingLeft: 18,
-    paddingRight: 18,
-    borderWidth: 1,
-    borderStyle: 'dashed',
-    borderColor: '#f9f9f9',
     flex: 1,
   },
 });
@@ -36,9 +25,7 @@ export const BleedPage: FC<BleedPageProps> = (props) => {
 
   return (
     <Page size={[PAGE_WIDTH, PAGE_HEIGHT]} style={styles.page}>
-      <View style={styles.trim}>
-        <View style={styles.content}>{children}</View>
-      </View>
+      <View style={styles.content}>{children}</View>
     </Page>
   );
 };
