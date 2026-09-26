@@ -24,13 +24,15 @@ const styles = StyleSheet.create({
 });
 
 interface Month2Props {
+  month: DateTime<true>;
   weeks: MonthGridWeek[];
-  previousMonth: DateTime<true>;
-  nextMonth: DateTime<true>;
 }
 
 export const Month2: FC<Month2Props> = (props) => {
-  const { weeks, previousMonth, nextMonth } = props;
+  const { month, weeks } = props;
+
+  const previousMonth = month.minus({ months: 1 });
+  const nextMonth = month.plus({ months: 1 });
 
   return (
     <BleedPage>

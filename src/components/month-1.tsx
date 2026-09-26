@@ -4,16 +4,20 @@ import { MonthHeader } from './month-header';
 import { DaysHeaderRow } from './day-header/days-header-row';
 import { WeekRow } from './week-row';
 import type { MonthGridWeek } from '../utils/get-month-weeks';
+import type { DateTime } from 'luxon';
+import { YEAR } from '../constants';
 
 const DAYS_OF_WEEK = ['Sun', 'Mon', 'Tue', 'Wed'];
 
 interface Month1Props {
-  title: string;
+  month: DateTime<true>;
   weeks: MonthGridWeek[];
 }
 
 export const Month1: FC<Month1Props> = (props) => {
-  const { title, weeks } = props;
+  const { month, weeks } = props;
+
+  const title = `${month.monthLong} ${YEAR}`;
 
   return (
     <BleedPage>
