@@ -9,9 +9,11 @@ const styles = StyleSheet.create({
     width: PAGE_WIDTH,
     height: PAGE_HEIGHT,
     fontFamily: 'League Spartan',
+    border: 0,
   },
   content: {
-    paddingBottom: 18,
+    // TODO: Might need to bleed some when I actually print this
+    // paddingBottom: 18,
     flex: 1,
   },
 });

@@ -1,21 +1,24 @@
 import { type FC } from 'react';
 import { StyleSheet, Text, View } from '@react-pdf/renderer';
 import type { DayCell } from '../utils/get-month-weeks';
+import { Colors } from './colors';
+import { CELL_BORDER_COLOR, CELL_BORDER_WIDTH } from '../constants';
 
 const styles = StyleSheet.create({
   cell: {
     flex: 1,
-    borderRightWidth: 0.5,
-    borderRightColor: '#E0E0E0',
-    borderBottomWidth: 0.5,
-    borderBottomColor: '#E0E0E0',
+    borderRightWidth: CELL_BORDER_WIDTH,
+    borderRightColor: CELL_BORDER_COLOR,
+    borderBottomWidth: CELL_BORDER_WIDTH,
+    borderBottomColor: CELL_BORDER_COLOR,
   },
   cellContent: {
     flex: 1,
     padding: 8,
   },
   cellNumber: {
-    fontSize: 12,
+    color: Colors.primary,
+    fontSize: 16,
   },
   noRightBorder: {
     borderRightWidth: 0,
@@ -28,8 +31,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   splitBottom: {
-    borderTopWidth: 0.5,
-    borderTopColor: '#E0E0E0',
+    borderTopWidth: CELL_BORDER_WIDTH,
+    borderTopColor: CELL_BORDER_COLOR,
   },
 });
 
