@@ -36,7 +36,7 @@ export const Month2: FC<Month2Props> = (props) => {
 
   return (
     <BleedPage>
-      <MonthHeader>
+      <MonthHeader month={month}>
         <MiniMonth month={previousMonth} />
         <MiniMonth month={nextMonth} />
       </MonthHeader>

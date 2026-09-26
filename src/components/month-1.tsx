@@ -21,7 +21,7 @@ export const Month1: FC<Month1Props> = (props) => {
 
   return (
     <BleedPage>
-      <MonthHeader title={title} />
+      <MonthHeader title={title} month={month} />
 
       <DaysHeaderRow days={DAYS_OF_WEEK} />
 
