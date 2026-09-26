@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     width: 130,
     objectFit: 'cover',
     borderRadius: 6,
-  }
+  },
 });
 
 interface MonthHeaderProps {
@@ -55,9 +55,7 @@ export const MonthHeader: FC<MonthHeaderProps> = (props) => {
   const { month, title, children } = props;
 
   return (
-    <View
-      style={styles.header}
-    >
+    <View style={styles.header}>
       <View style={styles.container}>
         {title && <Text style={styles.monthTitle}>{title}</Text>}
         <View style={styles.imageContainer}>

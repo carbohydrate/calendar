@@ -52,9 +52,7 @@ export const Day: FC<DayProps> = (props) => {
     >
       {overflowDay ? (
         <View style={styles.splitStack}>
-          <View style={styles.cellContent}>
-            {day && <DayNumber day={day} />}
-          </View>
+          <View style={styles.cellContent}>{day && <DayNumber day={day} />}</View>
           <View style={[styles.cellContent, styles.splitBottom]}>
             <DayNumber day={overflowDay} />
           </View>

@@ -1,4 +1,3 @@
-
 const TEST_PHOTO = '/images/test.jpg';
 
 const monthPhotos = import.meta.glob('/images/**/*.{png,jpg,jpeg}', {
@@ -17,7 +16,7 @@ export const getMonthPhoto = (month: number, index: number): string => {
   );
 
   return match ? monthPhotos[match] : TEST_PHOTO;
-}
+};
 
 export const getBirthdayPhoto = (name: string): string => {
   const match = Object.keys(birthdayPhotos).find((path) =>
@@ -25,4 +24,4 @@ export const getBirthdayPhoto = (name: string): string => {
   );
 
   return match ? birthdayPhotos[match] : TEST_PHOTO;
-}
+};

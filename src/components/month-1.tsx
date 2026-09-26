@@ -26,7 +26,6 @@ export const Month1: FC<Month1Props> = (props) => {
       <MonthHeader title={title} month={month} />
 
       <View style={monthSharedStyles.container}>
-
         <DaysHeaderRow days={DAYS_OF_WEEK} />
 
         {weeks.map((week, i) => (
