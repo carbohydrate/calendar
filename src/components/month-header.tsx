@@ -2,7 +2,7 @@ import { type FC, type ReactNode } from 'react';
 import { Image, StyleSheet, Text, View } from '@react-pdf/renderer';
 import { Colors } from './colors';
 import { DEFAULT_PAGE_PADDING } from './bleed-page';
-import { getMonthPhoto } from '../utils/get-month-photo';
+import { getMonthPhoto } from '../utils/photo-utils';
 import type { DateTime } from 'luxon';
 
 const styles = StyleSheet.create({

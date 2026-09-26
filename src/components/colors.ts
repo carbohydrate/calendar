@@ -1,6 +1,7 @@
 export const Colors = {
   primary: '#8e51ff',
   border: '#c4b4ff',
+  white: '#ffffff',
 };
 
 // violet

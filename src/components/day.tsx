@@ -1,8 +1,8 @@
 import { type FC } from 'react';
-import { StyleSheet, Text, View } from '@react-pdf/renderer';
+import { StyleSheet, View } from '@react-pdf/renderer';
 import type { DayCell } from '../utils/get-month-weeks';
-import { Colors } from './colors';
 import { CELL_BORDER_COLOR, CELL_BORDER_WIDTH } from '../constants';
+import { DayNumber } from './day-number';
 
 const styles = StyleSheet.create({
   cell: {
@@ -15,10 +15,6 @@ const styles = StyleSheet.create({
   cellContent: {
     flex: 1,
     padding: 8,
-  },
-  cellNumber: {
-    color: Colors.primary,
-    fontSize: 16,
   },
   noRightBorder: {
     borderRightWidth: 0,
@@ -57,16 +53,16 @@ export const Day: FC<DayProps> = (props) => {
       {overflowDay ? (
         <View style={styles.splitStack}>
           <View style={styles.cellContent}>
-            <Text style={styles.cellNumber}>{day?.day}</Text>
+            {day && <DayNumber day={day} />}
           </View>
           <View style={[styles.cellContent, styles.splitBottom]}>
-            <Text style={styles.cellNumber}>{overflowDay.day}</Text>
+            <DayNumber day={overflowDay} />
           </View>
         </View>
       ) : (
         day && (
           <View style={styles.cellContent}>
-            <Text style={styles.cellNumber}>{day.day}</Text>
+            <DayNumber day={day} />
           </View>
         )
       )}
