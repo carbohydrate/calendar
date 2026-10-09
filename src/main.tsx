@@ -20,7 +20,7 @@ Font.register({
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <PDFViewer width={1920} height={1080}>
+    <PDFViewer width='100%' height='100%'>
       <App />
     </PDFViewer>
   </StrictMode>,

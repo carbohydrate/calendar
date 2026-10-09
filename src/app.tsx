@@ -16,7 +16,7 @@ export const App: FC = () => {
   const months = getMonthsInYear();
 
   return (
-    <Document>
+    <Document pageLayout='twoPageLeft'>
       {months.map((month, i) => {
         return <Month key={i} month={month} />;
       })}
