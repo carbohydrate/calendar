@@ -1,6 +1,7 @@
 import { type FC } from 'react';
 import { StyleSheet, Text, View } from '@react-pdf/renderer';
 import { BleedPage } from './bleed-page';
+import { FrontPageTitle } from './front-page-title';
 import { Colors } from './colors';
 import { MONTH_PAGE_PADDING } from './month-shared-styles';
 import { HOLIDAYS } from '../holidays';
@@ -10,15 +11,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     justifyContent: 'center',
-  },
-  title: {
-    marginBottom: 20,
-    textAlign: 'center',
-    fontSize: 22,
-    fontWeight: 600,
-    letterSpacing: 4,
-    textTransform: 'uppercase',
-    color: Colors.primary,
   },
   list: {
     paddingHorizontal: MONTH_PAGE_PADDING * 3,
@@ -49,7 +41,7 @@ export const HolidaysPage: FC = () => {
   return (
     <BleedPage>
       <View style={styles.content}>
-        <Text style={styles.title}>{YEAR} Holidays</Text>
+        <FrontPageTitle title={`${YEAR} Holidays`} />
 
         <View style={styles.list}>
           {HOLIDAYS.map((holiday) => (

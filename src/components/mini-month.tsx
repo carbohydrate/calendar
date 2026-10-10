@@ -2,7 +2,6 @@ import { type FC } from 'react';
 import { StyleSheet, Text, View } from '@react-pdf/renderer';
 import type { DateTime } from 'luxon';
 import { getMonthWeeks } from '../utils/get-month-weeks';
-import { Colors } from './colors';
 
 const WEEKDAY_LABELS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
@@ -13,7 +12,6 @@ const GRID_WIDTH = CELL_WIDTH * 7 + CELL_GAP * 6;
 const styles = StyleSheet.create({
   container: {
     width: GRID_WIDTH,
-    color: Colors.white,
     flexDirection: 'column',
     gap: 2,
   },

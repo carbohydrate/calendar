@@ -42,6 +42,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 12,
     marginLeft: 'auto',
+    // the mini months inherit this
+    color: Colors.white,
   },
   imageContainer: {
     display: 'flex',

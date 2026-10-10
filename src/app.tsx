@@ -19,7 +19,7 @@ export const App: FC = () => {
 
   return (
     <Document pageLayout='twoPageLeft'>
-      <OverviewPage />
+      <OverviewPage months={months} />
       <HolidaysPage />
       {months.map((month, i) => {
         return <Month key={i} month={month} />;
