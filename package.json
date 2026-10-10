@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc -b && vite build",
     "dev": "vite",
+    "export": "node scripts/export.mjs",
     "format": "oxfmt",
     "lint": "oxlint",
     "preview": "vite preview"

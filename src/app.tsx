@@ -7,12 +7,19 @@ import { OverviewPage } from './components/overview-page';
 import { HolidaysPage } from './components/holidays-page';
 import { getMonthsInYear } from './utils/get-months-in-year';
 
-export const App: FC = () => {
+interface AppProps {
+  // the print version, see `npm run export`
+  print?: boolean;
+}
+
+export const App: FC<AppProps> = (props) => {
+  const { print } = props;
+
   const months = getMonthsInYear(YEAR);
 
   return (
     <Document pageLayout='twoPageLeft'>
-      {SHOW_BLANK_FIRST_PAGE && <BlankPage />}
+      {(print || SHOW_BLANK_FIRST_PAGE) && <BlankPage />}
       <OverviewPage year={YEAR} />
       <HolidaysPage />
       {months.map((month, i) => {

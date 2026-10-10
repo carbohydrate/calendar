@@ -1,32 +1,32 @@
-# React + TypeScript + Vite
+# Calendar
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A printable monthly photo calendar, built with React and [`@react-pdf/renderer`](https://react-pdf.org/). Each month is a two-page spread, with a year overview and a holiday list at the front.
 
-Currently, two official plugins are available:
+## Commands
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Starts the dev server with a live PDF preview in the browser |
+| `npm run export` | Writes the print-ready PDF to `private/export/calendar-<year>.pdf` |
+| `npm run build` | Type-checks and builds |
+| `npm run lint` | Lints with oxlint |
+| `npm run format` | Formats with oxfmt |
 
-## React Compiler
+## Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- The year is `YEAR` in `src/constants.ts`.
+- Photos and personal data live in `private/`, which is gitignored:
 
-## Expanding the Oxlint configuration
+  ```
+  private/
+    birthdays.ts                 # same shape as src/birthdays.example.ts
+    images/<month>/<1-4>.jpg     # header photos for each month
+    images/birthdays/<name>.jpg  # photo for each birthday
+    images/test.jpg              # placeholder when a photo is missing
+  ```
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+  Without `private/birthdays.ts`, the example birthdays in `src/birthdays.example.ts` are used.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+## Printing
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+`npm run export` produces the print version: it adds a blank first page, which the preview leaves out (see `SHOW_BLANK_FIRST_PAGE` in `src/constants.ts`). Pages are 8.5" × 11" with no bleed, meant for borderless printing.
