@@ -1,17 +1,20 @@
 import { type FC, type ReactNode } from 'react';
 import { Image, StyleSheet, Text, View } from '@react-pdf/renderer';
 import { Colors } from './colors';
-import { DEFAULT_PAGE_PADDING } from './bleed-page';
+import { MONTH_PAGE_PADDING } from './month-shared-styles';
 import { getMonthPhoto } from '../utils/photo-utils';
 import type { DateTime } from 'luxon';
+
+// Fixed so the photos sit in the same place every month. Fits "SEPTEMBER", the longest name.
+const TITLE_WIDTH = 200;
 
 const styles = StyleSheet.create({
   header: {
     height: 120,
-    // paddingTop: DEFAULT_PAGE_PADDING,
-    paddingRight: DEFAULT_PAGE_PADDING,
-    // paddingBottom: DEFAULT_PAGE_PADDING,
-    paddingLeft: DEFAULT_PAGE_PADDING,
+    // paddingTop: MONTH_PAGE_PADDING,
+    paddingRight: MONTH_PAGE_PADDING,
+    // paddingBottom: MONTH_PAGE_PADDING,
+    paddingLeft: MONTH_PAGE_PADDING,
     backgroundColor: Colors.primary,
     justifyContent: 'center',
   },
@@ -20,11 +23,20 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
   },
-  monthTitle: {
-    fontSize: 32,
-    fontWeight: 200,
+  title: {
+    width: TITLE_WIDTH,
+    color: Colors.white,
     textTransform: 'uppercase',
-    letterSpacing: 4,
+  },
+  titleMonth: {
+    fontSize: 36,
+    fontWeight: 500,
+    letterSpacing: 2,
+  },
+  titleYear: {
+    fontSize: 15,
+    fontWeight: 400,
+    letterSpacing: 6,
   },
   right: {
     flexDirection: 'row',
@@ -47,19 +59,24 @@ const styles = StyleSheet.create({
 
 interface MonthHeaderProps {
   month: DateTime<true>;
-  title?: string;
+  showTitle?: boolean;
   children?: ReactNode;
 }
 
 export const MonthHeader: FC<MonthHeaderProps> = (props) => {
-  const { month, title, children } = props;
+  const { month, showTitle, children } = props;
 
   return (
     <View style={styles.header}>
       <View style={styles.container}>
-        {title && <Text style={styles.monthTitle}>{title}</Text>}
+        {showTitle && (
+          <View style={styles.title}>
+            <Text style={styles.titleMonth}>{month.monthLong}</Text>
+            <Text style={styles.titleYear}>{month.year}</Text>
+          </View>
+        )}
         <View style={styles.imageContainer}>
-          {title ? (
+          {showTitle ? (
             <>
               <Image src={getMonthPhoto(month.month, 1)} style={styles.image} />
               <Image src={getMonthPhoto(month.month, 2)} style={styles.image} />

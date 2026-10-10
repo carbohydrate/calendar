@@ -5,7 +5,6 @@ import { DaysHeaderRow } from './day-header/days-header-row';
 import { WeekRow } from './week-row';
 import type { MonthGridWeek } from '../utils/get-month-weeks';
 import type { DateTime } from 'luxon';
-import { YEAR } from '../constants';
 import { View } from '@react-pdf/renderer';
 import { monthSharedStyles } from './month-shared-styles';
 
@@ -19,11 +18,9 @@ interface Month1Props {
 export const Month1: FC<Month1Props> = (props) => {
   const { month, weeks } = props;
 
-  const title = `${month.monthLong} ${YEAR}`;
-
   return (
     <BleedPage>
-      <MonthHeader title={title} month={month} />
+      <MonthHeader month={month} showTitle />
 
       <View style={monthSharedStyles.container}>
         <DaysHeaderRow days={DAYS_OF_WEEK} />
