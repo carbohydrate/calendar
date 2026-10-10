@@ -1,7 +1,7 @@
 import type { Birthday } from './birthdays';
 
-// Example data. Copy to src/private/birthdays.ts (gitignored) and fill in real birthdays.
-// `name` also matches the photo at images/birthdays/<name>.jpg.
+// Example data. Copy to private/birthdays.ts (gitignored) and fill in real birthdays.
+// `name` also matches the photo at private/images/birthdays/<name>.jpg.
 export const BIRTHDAYS: Birthday[] = [
   {
     name: 'alice',

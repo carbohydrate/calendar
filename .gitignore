@@ -23,6 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-images/*
-
-src/private/
+private/
