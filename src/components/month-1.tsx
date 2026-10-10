@@ -22,7 +22,7 @@ export const Month1: FC<Month1Props> = (props) => {
     <BleedPage>
       <MonthHeader month={month} showTitle />
 
-      <View style={monthSharedStyles.container}>
+      <View style={[monthSharedStyles.container, monthSharedStyles.leftPage]}>
         <DaysHeaderRow days={DAYS_OF_WEEK} />
 
         {weeks.map((week, i) => (

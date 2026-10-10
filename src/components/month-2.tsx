@@ -42,7 +42,7 @@ export const Month2: FC<Month2Props> = (props) => {
         <MiniMonth month={nextMonth} />
       </MonthHeader>
 
-      <View style={monthSharedStyles.container}>
+      <View style={[monthSharedStyles.container, monthSharedStyles.rightPage]}>
         <DaysHeaderRow days={DAYS_OF_WEEK} />
 
         <View style={styles.gridRow}>
