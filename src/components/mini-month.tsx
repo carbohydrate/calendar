@@ -5,7 +5,7 @@ import { getMonthWeeks } from '../utils/get-month-weeks';
 
 const WEEKDAY_LABELS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
-const CELL_WIDTH = 12;
+const CELL_WIDTH = 15;
 const CELL_GAP = 2;
 const GRID_WIDTH = CELL_WIDTH * 7 + CELL_GAP * 6;
 
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     textAlign: 'center',
     textTransform: 'uppercase',
-    fontWeight: 500,
+    fontWeight: 600,
   },
   row: {
     flexDirection: 'row',
@@ -31,11 +31,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   weekdayText: {
-    fontSize: 8,
-    fontWeight: 500,
+    fontSize: 9,
+    fontWeight: 600,
   },
   dayText: {
-    fontSize: 8,
+    fontSize: 9,
+    fontWeight: 400,
   },
 });
 
