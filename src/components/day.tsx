@@ -3,6 +3,7 @@ import { StyleSheet, View } from '@react-pdf/renderer';
 import type { DayCell } from '../utils/get-month-weeks';
 import { CELL_BORDER_COLOR, CELL_BORDER_WIDTH } from '../constants';
 import { DayNumber } from './day-number';
+import { HolidayLabel } from './holiday-label';
 
 const styles = StyleSheet.create({
   cell: {
@@ -52,15 +53,24 @@ export const Day: FC<DayProps> = (props) => {
     >
       {overflowDay ? (
         <View style={styles.splitStack}>
-          <View style={styles.cellContent}>{day && <DayNumber day={day} />}</View>
+          <View style={styles.cellContent}>
+            {day && (
+              <>
+                <DayNumber day={day} />
+                <HolidayLabel day={day} />
+              </>
+            )}
+          </View>
           <View style={[styles.cellContent, styles.splitBottom]}>
             <DayNumber day={overflowDay} />
+            <HolidayLabel day={overflowDay} />
           </View>
         </View>
       ) : (
         day && (
           <View style={styles.cellContent}>
             <DayNumber day={day} />
+            <HolidayLabel day={day} />
           </View>
         )
       )}
