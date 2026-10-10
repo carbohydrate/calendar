@@ -5,7 +5,7 @@ import { BleedPage } from './bleed-page';
 import { FrontPageTitle } from './front-page-title';
 import { MiniMonth } from './mini-month';
 import { Colors } from './colors';
-import { YEAR } from '../constants';
+import { getMonthsInYear } from '../utils/get-months-in-year';
 
 const MONTHS_PER_ROW = 3;
 // space between months. Down is a bit smaller than across so they look equal: 5-week
@@ -33,11 +33,13 @@ const styles = StyleSheet.create({
 });
 
 interface OverviewPageProps {
-  months: DateTime<true>[];
+  year: number;
 }
 
 export const OverviewPage: FC<OverviewPageProps> = (props) => {
-  const { months } = props;
+  const { year } = props;
+
+  const months = getMonthsInYear(year);
 
   const rows: DateTime<true>[][] = [];
   for (let i = 0; i < months.length; i += MONTHS_PER_ROW) {
@@ -47,7 +49,7 @@ export const OverviewPage: FC<OverviewPageProps> = (props) => {
   return (
     <BleedPage>
       <View style={styles.content}>
-        <FrontPageTitle title={`${YEAR} Overview`} />
+        <FrontPageTitle title={`${year} Overview`} />
 
         <View style={styles.grid}>
           {rows.map((row, i) => (

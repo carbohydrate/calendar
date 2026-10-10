@@ -1,29 +1,24 @@
 import { Document } from '@react-pdf/renderer';
 import { type FC } from 'react';
 import { Month } from './components/month';
-import { DateTime } from 'luxon';
-import { YEAR } from './constants';
+import { SHOW_BLANK_FIRST_PAGE, YEAR } from './constants';
+import { BlankPage } from './components/blank-page';
 import { OverviewPage } from './components/overview-page';
 import { HolidaysPage } from './components/holidays-page';
-
-const getMonthsInYear = () => {
-  const months = Array.from({ length: 12 }, (_, i) => {
-    return DateTime.local(YEAR, i + 1, 1);
-  }).filter((d): d is DateTime<true> => d.isValid);
-
-  return months;
-};
+import { getMonthsInYear } from './utils/get-months-in-year';
 
 export const App: FC = () => {
-  const months = getMonthsInYear();
+  const months = getMonthsInYear(YEAR);
 
   return (
     <Document pageLayout='twoPageLeft'>
-      <OverviewPage months={months} />
+      {SHOW_BLANK_FIRST_PAGE && <BlankPage />}
+      <OverviewPage year={YEAR} />
       <HolidaysPage />
       {months.map((month, i) => {
         return <Month key={i} month={month} />;
       })}
+      <OverviewPage year={YEAR + 1} />
     </Document>
   );
 };
