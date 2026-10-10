@@ -3,6 +3,8 @@ import { type FC } from 'react';
 import { Month } from './components/month';
 import { DateTime } from 'luxon';
 import { YEAR } from './constants';
+import { OverviewPage } from './components/overview-page';
+import { HolidaysPage } from './components/holidays-page';
 
 const getMonthsInYear = () => {
   const months = Array.from({ length: 12 }, (_, i) => {
@@ -17,6 +19,8 @@ export const App: FC = () => {
 
   return (
     <Document pageLayout='twoPageLeft'>
+      <OverviewPage />
+      <HolidaysPage />
       {months.map((month, i) => {
         return <Month key={i} month={month} />;
       })}
